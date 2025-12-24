@@ -28,6 +28,10 @@ async function ensureCorrectChain(eth: any): Promise<void> {
   const targetHex = toHexChainId(targetChainId)
   if (currentHex?.toLowerCase() === targetHex.toLowerCase()) return
 
+  if (!ENV.VITE_RPC_URL) {
+    throw new Error('Missing VITE_RPC_URL. Set it in Vercel Environment Variables to enable wallet switching.')
+  }
+
   try {
     await eth.request({
       method: 'wallet_switchEthereumChain',

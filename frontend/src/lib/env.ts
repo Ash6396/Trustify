@@ -1,16 +1,42 @@
-function requireEnv(key: string): string {
+const missing: string[] = []
+
+function readEnv(key: string): string | undefined {
   const v = (import.meta.env as Record<string, any>)[key] as string | undefined
-  if (!v || String(v).trim() === '') {
-    throw new Error(`Missing required env var: ${key}`)
+  const s = v == null ? '' : String(v)
+  return s.trim() === '' ? undefined : s
+}
+
+function envString(key: string, opts?: { required?: boolean; defaultValue?: string }): string {
+  const v = readEnv(key)
+  if (v != null) return v
+  if (opts?.required) missing.push(key)
+  return opts?.defaultValue ?? ''
+}
+
+function envNumber(key: string, opts?: { required?: boolean; defaultValue?: number }): number {
+  const v = readEnv(key)
+  if (v != null) {
+    const n = Number(v)
+    if (!Number.isNaN(n)) return n
   }
-  return v
+  if (opts?.required) missing.push(key)
+  return opts?.defaultValue ?? 0
 }
 
 export const ENV = {
-  VITE_API_BASE_URL: requireEnv('VITE_API_BASE_URL'),
-  VITE_CHAIN_ID: Number(requireEnv('VITE_CHAIN_ID')),
-  VITE_RPC_URL: requireEnv('VITE_RPC_URL'),
-  VITE_CONTRACT_ADDRESS: requireEnv('VITE_CONTRACT_ADDRESS')
+  VITE_API_BASE_URL: envString('VITE_API_BASE_URL', { required: true }),
+  VITE_CHAIN_ID: envNumber('VITE_CHAIN_ID', { defaultValue: 11155111 }),
+  VITE_RPC_URL: envString('VITE_RPC_URL'),
+  VITE_CONTRACT_ADDRESS: envString('VITE_CONTRACT_ADDRESS', {
+    defaultValue: '0x0000000000000000000000000000000000000000'
+  })
+}
+
+export const ENV_MISSING = missing
+
+if (ENV_MISSING.length > 0) {
+  // eslint-disable-next-line no-console
+  console.warn(`[env] Missing required Vite env vars: ${ENV_MISSING.join(', ')}`)
 }
 
 export type Role = 'donor' | 'creator' | 'admin'
