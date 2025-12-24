@@ -36,9 +36,25 @@ async function start() {
   }
 
   app.use(helmet());
+
+  const normalizeOrigin = (o) => String(o || '').trim().replace(/\/+$/, '');
+  const allowedOrigins = String(env.CORS_ORIGIN || '')
+    .split(',')
+    .map(normalizeOrigin)
+    .filter(Boolean);
+
   app.use(
     cors({
-      origin: env.CORS_ORIGIN,
+      origin(origin, cb) {
+        // Allow non-browser requests (no Origin header)
+        if (!origin) return cb(null, true);
+
+        const o = normalizeOrigin(origin);
+        if (allowedOrigins.length === 0) return cb(null, true);
+        if (allowedOrigins.includes('*')) return cb(null, true);
+        if (allowedOrigins.includes(o)) return cb(null, true);
+        return cb(new Error(`CORS blocked for origin: ${origin}`));
+      },
       credentials: true
     })
   );

@@ -14,7 +14,7 @@ export function setStoredToken(token: string | null) {
 
 export const api = axios.create({
   baseURL: ENV.VITE_API_BASE_URL || '/api',
-  timeout: 15000
+  timeout: 60000
 })
 
 api.interceptors.request.use((config) => {
