@@ -81,7 +81,6 @@ export default function Dashboard() {
         {/* 2. Primary Actions (Big Cards) */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           
-          {/* Action 1: Role Specific */}
           {user?.role === 'creator' ? (
              <Link to="/create" className="group relative overflow-hidden p-8 rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-xl shadow-indigo-500/20 hover:shadow-indigo-500/30 transition-all hover:-translate-y-1">
                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-125 transition-transform duration-500">

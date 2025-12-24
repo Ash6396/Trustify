@@ -40,7 +40,6 @@ export default function CampaignCard({ campaign, className, style }: CampaignCar
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             loading="lazy"
             decoding="async"
-            referrerPolicy="no-referrer"
             onError={(e) => {
               ; (e.currentTarget as HTMLImageElement).style.display = 'none'
             }}
