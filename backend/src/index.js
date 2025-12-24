@@ -30,6 +30,11 @@ async function start() {
   const app = express();
   app.disable('x-powered-by');
 
+  if (env.MISSING_REQUIRED_ENV && env.MISSING_REQUIRED_ENV.length > 0) {
+    // eslint-disable-next-line no-console
+    console.error(`[env] Service will run but is misconfigured. Missing: ${env.MISSING_REQUIRED_ENV.join(', ')}`);
+  }
+
   app.use(helmet());
   app.use(
     cors({

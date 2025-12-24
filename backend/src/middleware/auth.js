@@ -5,6 +5,10 @@ const User = require('../models/User');
 
 async function requireAuth(req, res, next) {
   try {
+    if (!env.JWT_SECRET) {
+      throw new ApiError(503, 'Server not configured: JWT_SECRET is missing');
+    }
+
     const header = req.headers.authorization;
     if (!header || !header.startsWith('Bearer ')) {
       throw new ApiError(401, 'Unauthorized');
@@ -25,6 +29,8 @@ async function requireAuth(req, res, next) {
 
 async function optionalAuth(req, res, next) {
   try {
+    if (!env.JWT_SECRET) return next();
+
     const header = req.headers.authorization;
     if (!header || !header.startsWith('Bearer ')) return next();
 

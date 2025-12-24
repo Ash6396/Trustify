@@ -7,6 +7,9 @@ const { asyncHandler } = require('../utils/asyncHandler');
 const User = require('../models/User');
 
 function signToken(userId) {
+  if (!env.JWT_SECRET) {
+    throw new ApiError(503, 'Server not configured: JWT_SECRET is missing');
+  }
   return jwt.sign({ sub: userId }, env.JWT_SECRET, { expiresIn: env.JWT_EXPIRES_IN });
 }
 
