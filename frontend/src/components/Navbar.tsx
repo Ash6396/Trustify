@@ -3,7 +3,7 @@ import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
 import { useWallet } from '../context/WalletContext'
-import { Menu, X, Sun, Moon, LogOut, User as UserIcon, Wallet, ChevronDown, LayoutDashboard, Send, Vote } from 'lucide-react'
+import { Menu, X, Sun, Moon, LogOut, User as UserIcon, Wallet, ChevronDown, LayoutDashboard, Send } from 'lucide-react'
 
 function NavItem({ to, label, icon: Icon, onClick }: { to: string; label: string; icon?: React.ElementType; onClick?: () => void }) {
   return (
@@ -220,7 +220,7 @@ export default function Navbar() {
               {user && (
                 <>
                   <NavItem to="/dashboard" label="Dashboard" />
-                  <NavItem to="/dao" label="DAO Voting" isMobile />
+                  <NavItem to="/dao" label="DAO Voting" />
                   <NavItem to="/profile" label="Profile" icon={UserIcon} />
                   {user.role === 'admin' && <NavItem to="/admin" label="Admin Dashboard" icon={LayoutDashboard} />}
                   {user.role === 'creator' && <NavItem to="/create" label="Create Campaign" icon={Send} />}
