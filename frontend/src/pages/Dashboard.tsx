@@ -207,7 +207,6 @@ export default function Dashboard() {
                             className="w-full h-full object-cover"
                             loading="lazy"
                             decoding="async"
-                            referrerPolicy="no-referrer"
                             onError={(e) => {
                               ;(e.currentTarget as HTMLImageElement).style.display = 'none'
                             }}

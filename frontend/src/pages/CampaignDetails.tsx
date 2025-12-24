@@ -238,12 +238,12 @@ export default function CampaignDetails() {
             {/* Main Card */}
             <div className="tf-card overflow-hidden p-0 border-0 shadow-xl shadow-black/5 bg-transparent">
               <div className={`relative ${hasCoverImage ? 'h-[400px] md:h-[500px]' : 'h-[260px] md:h-[320px]'}`}>
-                <div className="absolute inset-0 bg-slate-900" /> {/* Fallback bg */}
+                <div className="absolute inset-0 bg-slate-900 z-0" /> {/* Fallback bg */}
                 {hasCoverImage ? (
                   <img
                     src={coverUrl}
                     alt={campaign.title}
-                    className="w-full h-full object-cover"
+                    className="relative z-10 w-full h-full object-cover"
                     loading="lazy"
                     decoding="async"
                     onError={() => setCoverImageOk(false)}

@@ -31,13 +31,13 @@ export default function CampaignCard({ campaign, className, style }: CampaignCar
     >
       <div className="h-48 relative overflow-hidden bg-accent/20">
         {/* Placeholder Gradient if no image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-violet-500/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-violet-500/10 z-0" />
 
         {imageSrc ? (
           <img
             src={imageSrc}
             alt={campaign.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="relative z-10 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             loading="lazy"
             decoding="async"
             onError={(e) => {
