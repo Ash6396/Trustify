@@ -27,8 +27,6 @@ process.on('uncaughtException', (err) => {
 });
 
 async function start() {
-  await connectDB(env.MONGODB_URI);
-
   const app = express();
   app.disable('x-powered-by');
 
@@ -43,6 +41,10 @@ async function start() {
   app.use(morgan('dev'));
   app.use('/api', apiRateLimit);
 
+  app.get('/api/health', (req, res) => {
+    res.json({ ok: true });
+  });
+
   app.use('/api/auth', authRoutes);
   app.use('/api/users', userRoutes);
   app.use('/api/campaigns', campaignRoutes);
@@ -56,6 +58,12 @@ async function start() {
   app.listen(env.PORT, () => {
     // eslint-disable-next-line no-console
     console.log(`[backend] listening on http://localhost:${env.PORT}`);
+  });
+
+  // Connect in the background so deploys don't fail if Atlas/network rules are still propagating.
+  connectDB(env.MONGODB_URI).catch((err) => {
+    // eslint-disable-next-line no-console
+    console.error('[db] initial connection failed (server still running):', err);
   });
 }
 
