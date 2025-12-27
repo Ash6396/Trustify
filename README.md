@@ -24,7 +24,7 @@ As a result, users hesitate to contribute, invest, or collaborate due to low con
 
 💡 Our Solution
 
-Trustify solves this by combining Web3 transparency with Web2 simplicity.
+Trustify solves this by combining Web3 transparency simplicity.
 
 We introduce:
 
@@ -32,7 +32,7 @@ Blockchain-based verification for immutable records
 
 Trust Score System based on user behavior and history
 
-Hybrid login & payment system (Web2 + Web3)
+Hybrid login & payment system (Web3)
 
 Real-time transparency dashboard
 
