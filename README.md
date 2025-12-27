@@ -1,7 +1,7 @@
 
 📌 Overview
 
-Trustify is a next-generation trust and transparency platform that bridges Web2 and Web3 to enable secure, verifiable, and fraud-resistant transactions.
+Trustify is a next-generation trust and transparency platform that bridges Web3 to enable secure, verifiable, and fraud-resistant transactions.
 It is designed to bring accountability, trust scoring, and transparent verification into digital interactions such as crowdfunding, donations, partnerships, and online agreements.
 
 Trustify empowers users by ensuring that every action is traceable, verifiable, and trust-driven—without compromising usability.
