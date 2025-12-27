@@ -1,4 +1,4 @@
-
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/22667fdd-041c-4391-8030-1344cfee27e3" />
 
 📌 Overview
 
@@ -82,8 +82,6 @@ Express.js
 
 MongoDB
 
-Firebase (Auth / Storage)
-
 Blockchain
 
 Solidity Smart Contracts
@@ -99,30 +97,7 @@ Vercel (Frontend)
 Render (Backend & Services)
 
 📊 Workflow
-## 🔄 Workflow Diagram
-
-```mermaid
-flowchart TD
-    A[User] --> B[Login / Wallet Connect]
-    B --> C[Authentication & Verification]
-
-    C --> D[User Action / Transaction]
-    D --> E[Smart Contract Execution]
-
-    E --> F[Blockchain (On-Chain Records)]
-    E --> G[Backend Server]
-
-    G --> H[Database / Firebase (Off-Chain Data)]
-
-    F --> I[Trust Score Engine]
-    H --> I
-
-    I --> J[User Dashboard]
-    I --> K[Admin Dashboard]
-
-    K --> L[Monitoring & Fraud Detection]
-
-
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/823b0592-6acb-45ba-90e7-88c93c0f8ab0" />
 
 👥 Team: WingsBytesCode
 
